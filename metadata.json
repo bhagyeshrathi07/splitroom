@@ -1,0 +1,8 @@
+{
+  "name": "Splitroom",
+  "description": "Real-time multiplayer room for friend groups planning trips together with calendar sync, date polling, and maps-grounded venue suggestions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

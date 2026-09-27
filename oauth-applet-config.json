@@ -1,0 +1,6 @@
+{
+  "client_id": "631970480769-8gk24ipub9681basq1gm0s7kh1cevcd8.apps.googleusercontent.com",
+  "scopes": [
+    "https://www.googleapis.com/auth/calendar.freebusy"
+  ]
+}

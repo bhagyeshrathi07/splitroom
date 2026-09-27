@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "Room": {
+      "title": "Room",
+      "description": "A Splitroom trip planning room",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Room ID (6 character code)"
+        },
+        "creatorId": {
+          "type": "string",
+          "description": "UID of the user who created the room"
+        },
+        "creatorName": {
+          "type": "string",
+          "description": "Display name of the room creator"
+        },
+        "destination": {
+          "type": "string",
+          "description": "Destination city for the trip"
+        },
+        "tripLengthNights": {
+          "type": "number",
+          "description": "Length of trip in nights"
+        },
+        "dateWindowStart": {
+          "type": "string",
+          "description": "Earliest start date in YYYY-MM-DD"
+        },
+        "dateWindowEnd": {
+          "type": "string",
+          "description": "Latest end date in YYYY-MM-DD"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when created"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp when last updated"
+        }
+      },
+      "required": ["id", "creatorId", "destination", "tripLengthNights", "dateWindowStart", "dateWindowEnd"]
+    },
+    "Participant": {
+      "title": "Participant",
+      "description": "A member joined into a room",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "User ID"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "User profile avatar URL"
+        },
+        "calendarSynced": {
+          "type": "boolean",
+          "description": "Whether user has synced Google Calendar availability"
+        },
+        "joinedAt": {
+          "type": "string",
+          "description": "ISO timestamp of joining"
+        }
+      },
+      "required": ["uid", "displayName"]
+    }
+  },
+  "firestore": {
+    "/rooms/{roomId}": {
+      "schema": "Room",
+      "description": "Trip planning room document"
+    },
+    "/rooms/{roomId}/participants/{participantId}": {
+      "schema": "Participant",
+      "description": "Participants in the room"
+    }
+  }
+}

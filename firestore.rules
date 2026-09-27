@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Test connection doc
+    match /test/connection {
+      allow read, write: if true;
+    }
+
+    // Rooms collection
+    match /rooms/{roomId} {
+      allow read, write: if isValidId(roomId);
+
+      // Subcollection: participants
+      match /participants/{participantId} {
+        allow read, write: if isValidId(participantId);
+      }
+    }
+  }
+}
+
